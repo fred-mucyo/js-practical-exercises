@@ -1,0 +1,132 @@
+// Initially a number 1 is written on a board. It is possible to do the following operations with it:
+
+//  multiply the number by 3; increase the number by 5. Your task is to determine that using this two operations step by step, is it possible to obtain number n?
+
+// Example
+// For n = 1, the result should be true.
+
+// 1 = 1
+
+// For n = 2, the result should be false.
+
+// For n = 3, the result should be true.
+
+// 1 x 3 = 3
+
+// For n = 4, the result should be false.
+
+// For n = 5, the result should be false.
+
+// For n = 6, the result should be true.
+
+// 1 + 5 = 6
+
+// For n = 18, the result should be true.
+
+// 1 + 5 = 6  --> 6 x 3 = 18
+
+
+
+
+// For n = 32, the result should be true.
+
+//  1 x 3 x 3 x 3 = 27  --> 27 + 5 = 32  i got stuck here < to be commented out >  
+
+// For n = 100, the result should be false.
+
+// For n = 101, the result should be true.
+
+// 1 + 5 + 5 + 5 ... +5 = 101
+
+// Input / Output
+// [input] integer n
+// positive integer, n ≤ 100000
+
+// [output] a boolean value
+// true if N can be obtained using given operations, false otherwise.
+
+
+
+
+
+const numberIncreasing = (n)=> {
+
+const initN = 1
+
+
+// operations to obtain the num 
+
+// initN x 3 or initN + 5 or both ways
+
+if(n === 1 ){
+    return true
+ } 
+else if( initN * 3 === n || initN + 5 === n){
+    return true
+
+ } else if(initN * 3 + 5 === n ||  (initN + 5) * 3 === n){
+    return true
+    
+ } else if(typeof initN === 'number'){
+
+for(let i =1; i<=n;i*=3){
+if(n===i ||n === i + 5){
+    return true
+}
+ else{
+
+for(let i=1;i<=n;i+=5){
+if(n === i)
+return  true
+    } }
+}
+
+
+
+} 
+ return false
+}
+
+
+
+
+
+console.log(numberIncreasing(108))
+
+
+
+
+const numberIncreasing = (n) => {
+    const initN = 1;
+
+    if (n === 1) {
+        return true;
+    } else if (initN * 3 === n || initN + 5 === n) {
+        return true;
+    } else if (initN * 3 + 5 === n || (initN + 5) * 3 === n) {
+        return true;
+    } else if (typeof initN === 'number') {
+
+        for (let i = 1; i <= n; i *= 3) {
+            if (n === i || n === i + 5) {
+                return true;
+            }
+
+            for (let j = i; j <= n; j += 5) {
+                if (n === j) {
+                    return true;
+                }
+            }
+        }
+
+        for (let i = 1; i <= n; i += 5) {
+            for (let j = i; j <= n; j *= 3) {
+                if (n === j) {
+                    return true;
+                }
+            }
+        }
+    }
+
+    return false;
+};
